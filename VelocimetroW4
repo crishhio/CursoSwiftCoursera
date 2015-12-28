@@ -1,0 +1,79 @@
+
+
+//////////////////////////////////////
+///                                ///
+///    Desafio semana 4            ///
+///    Cristian Gomez Leon         ///
+///     Velocimetro                ///
+///                                ///
+//////////////////////////////////////
+
+import Foundation
+
+///// Enumeracion de tipo Int
+
+enum velocidades: Int{
+    case Apagado = 0,VelocidadBaja = 20,VelocidadMedia = 50,VelocidadAlta = 120, velocidadInicial
+    init(var velocidadInicial:velocidades)
+    {
+        velocidadInicial = velocidades.Apagado
+        self = .velocidadInicial
+    }
+}
+
+class Auto
+{
+    var velocidad:velocidades
+    
+    init()
+    {
+        self.velocidad = velocidades.velocidadInicial
+    }
+    
+    func cambioDeVelocidad() ->String
+    {
+        if velocidad == velocidades.velocidadInicial
+        {
+            velocidad = velocidades.Apagado
+        }
+        else if velocidad == velocidades.Apagado
+        {
+            velocidad = velocidades.VelocidadBaja
+        }
+        else if velocidad == velocidades.VelocidadBaja
+        {
+            velocidad = velocidades.VelocidadMedia
+        }
+        else if velocidad == velocidades.VelocidadMedia
+        {
+            
+            velocidad = velocidades.VelocidadAlta
+        }
+        else if velocidad == velocidades.VelocidadAlta
+        {
+            velocidad = velocidades.VelocidadMedia
+        }
+        return  String(velocidad)
+    }
+}
+
+
+var _Nissan = Auto()
+var interacciones =  1...20
+
+//////////// Interacciones
+
+for inter in interacciones
+{
+    _Nissan.cambioDeVelocidad()
+    print("\(inter).-    \(_Nissan.velocidad.rawValue),   \(_Nissan.velocidad)  ")
+}
+
+
+
+
+
+
+
+
+
